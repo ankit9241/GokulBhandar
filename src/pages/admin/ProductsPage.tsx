@@ -17,11 +17,15 @@ export default function ProductsPage() {
   const categories = [...new Set(products.map(p => p.category))];
 
   const handleDeleteProduct = (productId: string) => {
-    toast.success('Product deleted successfully');
+    // TODO: Implement actual delete functionality
+    console.log('Deleting product:', productId);
+    toast.success(`Product ${productId} deleted successfully`);
   };
 
   const handleToggleStatus = (productId: string) => {
-    toast.success('Product status updated');
+    // TODO: Implement actual status toggle functionality
+    console.log('Toggling status for product:', productId);
+    toast.success(`Product ${productId} status updated`);
   };
 
   return (

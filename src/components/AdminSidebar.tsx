@@ -5,8 +5,7 @@ import {
   RiFileListLine, 
   RiFolderLine, 
   RiUserLine, 
-  RiBarChartLine,
-  RiStore2Line
+  RiBarChartLine
 } from 'react-icons/ri';
 
 const AdminSidebar = () => {

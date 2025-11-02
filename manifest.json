@@ -1,0 +1,17 @@
+{
+  "short_name": "GokulBhandar",
+  "name": "Gokul Bhandar - Your Trusted Store",
+  "description": "Your one-stop shop for all your needs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "/icons/pw.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

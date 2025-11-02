@@ -2,8 +2,17 @@
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#4CAF50" />
+    <meta name="description" content="Gokul Bhandar - Your one-stop shop for all your grocery needs" />
     <title>Gokul Bhandar - Grocery Store</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icons/pw.png" />
+    <link rel="apple-touch-startup-image" href="/icons/pw.png" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,14 +20,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Pacifico&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/icons/pw.png" />
+    <link rel="shortcut icon" href="/icons/pw.png" />
     
     <!-- Preload critical assets -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css"></noscript>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- PWA Install Button - Will be moved by React if needed -->
+      <div id="pwa-install-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <button id="installButton" style="display: none; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+          Install App
+        </button>
+      </div>
+    </div>
+    
+    <!-- PWA Script -->
+    <script src="/public/scripts/app.js"></script>
+    <!-- Main App Script -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

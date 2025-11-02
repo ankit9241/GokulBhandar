@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import Header from './Header';
 import Footer from './Footer';
 import WhatsAppButton from './WhatsAppButton';
+import DownloadButton from './DownloadButton';
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
       </main>
       <Footer />
       <WhatsAppButton />
+      <DownloadButton />
       <Toaster 
         position="top-right"
         toastOptions={{

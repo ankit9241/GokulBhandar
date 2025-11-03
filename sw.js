@@ -1,10 +1,10 @@
-const CACHE_NAME = 'gokulbhandar-cache-v1';
+const CACHE_NAME = 'gokulbhandar-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles/main.css',
-  '/scripts/main.js',
-  '/icons/pw.png'
+  '/manifest.json',
+  '/logo.png',
+  '/favicon.ico'
 ];
 
 // Install event - cache the application shell

@@ -53,7 +53,7 @@ A modern, responsive grocery store web application built with React, TypeScript,
    yarn dev
    ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser to see the application.
+4. Open [http://localhost:8080](http://localhost:8080) in your browser to see the application.
 
 ### Building for Production
 

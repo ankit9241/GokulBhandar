@@ -1,15 +1,25 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   RiDashboardLine, 
   RiShoppingBagLine, 
   RiFileListLine, 
   RiFolderLine, 
   RiUserLine, 
-  RiBarChartLine
+  RiBarChartLine,
+  RiLogoutBoxLine
 } from 'react-icons/ri';
+import { authService } from '@/services/auth';
+import { toast } from 'react-hot-toast';
 
 const AdminSidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    authService.logout();
+    toast.success('Successfully logged out');
+    navigate('/login');
+  };
 
   const navigation = [
     { 
@@ -82,6 +92,17 @@ const AdminSidebar = () => {
             </Link>
           ))}
         </nav>
+        
+        {/* Logout Button */}
+        <div className="p-4 border-t border-gray-200">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center justify-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md group transition-colors"
+          >
+            <RiLogoutBoxLine className="h-5 w-5 mr-2" />
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

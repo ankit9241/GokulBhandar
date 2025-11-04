@@ -3,8 +3,6 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { toast, Toaster } from 'react-hot-toast';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { orderService } from '@/services/orders';
 
 
@@ -252,11 +250,9 @@ export default function PaymentPage() {
   if (!orderData) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-green-600 mx-auto"></div>
         </div>
-        <Footer />
       </div>
     );
   }

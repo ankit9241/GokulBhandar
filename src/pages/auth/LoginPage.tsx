@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { authService } from '../../services/auth';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -9,7 +9,6 @@ const LoginPage = () => {
     password: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,20 +20,19 @@ const LoginPage = () => {
       if (result.success) {
         toast.success('Login successful!');
         
-        // Get user data from localStorage
+        // Get user data from auth service
         const user = authService.getCurrentUser();
+        console.log('Logged in user:', user); // For debugging
         
-        // Redirect based on role
-        if (user?.role === 'admin') {
-          navigate('/admin');
-        } else {
-          navigate('/');
-        }
+        // Force a page reload to ensure all auth state is properly initialized
+        // This ensures the AdminRoute component will properly check the user's role
+        window.location.href = '/admin';
       } else {
         toast.error(result.message || 'Login failed. Please check your credentials.');
       }
     } catch (error) {
-      toast.error('Invalid credentials. Try admin@Gokul Bhandar.com with password123');
+      console.error('Login error:', error);
+      toast.error('An error occurred during login. Please try again.');
     } finally {
       setIsLoading(false);
     }

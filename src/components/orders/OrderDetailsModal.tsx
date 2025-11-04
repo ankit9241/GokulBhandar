@@ -11,7 +11,28 @@ interface OrderDetailsModalProps {
 }
 
 const OrderDetailsModal = ({ isOpen, onClose, order }: OrderDetailsModalProps) => {
+  
   if (!order) return null;
+  
+  const handleTrackOrder = (e: React.MouseEvent) => {
+    // Prevent any default behavior and stop propagation
+    e.preventDefault();
+    e.stopPropagation();
+    
+    console.log('Track Order clicked - direct handler');
+    
+    if (!order?.id) {
+      console.error('No order ID available');
+      return;
+    }
+    
+    // Close the modal
+    if (onClose) onClose();
+    
+    // Navigate directly using window.location
+    console.log('Navigating to track page with order ID:', order.id);
+    window.location.href = `/track?orderId=${order.id}`;
+  };
 
   const getStatusBadge = (status: string) => {
     const baseClasses = 'px-3 py-1 text-xs font-medium rounded-full';
@@ -49,7 +70,7 @@ const OrderDetailsModal = ({ isOpen, onClose, order }: OrderDetailsModalProps) =
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={onClose}>
+      <Dialog as="div" className="relative z-40" onClose={onClose} onClick={(e) => e.stopPropagation()}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -203,12 +224,28 @@ const OrderDetailsModal = ({ isOpen, onClose, order }: OrderDetailsModalProps) =
                     Close
                   </button>
                   {order.status !== 'cancelled' && (
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                    <div 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        console.log('Div click handler');
+                        handleTrackOrder(e);
+                      }}
+                      className="inline-block"
                     >
-                      Track Order
-                    </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          console.log('Button click handler');
+                          handleTrackOrder(e);
+                        }}
+                        className="relative z-[9999] inline-flex justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={!order.id}
+                        style={{ pointerEvents: 'auto' }}
+                      >
+                        Track Order
+                      </button>
+                    </div>
                   )}
                 </div>
               </Dialog.Panel>

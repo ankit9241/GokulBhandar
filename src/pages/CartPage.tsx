@@ -1,11 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import { toast, Toaster } from 'react-hot-toast';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import type { CartItem } from '@/context/CartContext';
 
 export default function CartPage() {
@@ -88,10 +85,8 @@ export default function CartPage() {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <Toaster position="top-right" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <i className="ri-shopping-cart-line text-6xl text-gray-400 mb-6 w-24 h-24 flex items-center justify-center mx-auto"></i>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Your cart is empty</h1>
@@ -100,9 +95,7 @@ export default function CartPage() {
               Continue Shopping
             </Link>
           </div>
-        </div>
-        
-        <Footer />
+        </main>
       </div>
     );
   }
